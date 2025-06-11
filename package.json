@@ -1,5 +1,5 @@
 {
-  "name": "package",
+  "name": "learning-platform",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,12 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "format": "prettier --write .",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.2"
+    "react-router-dom": "^7.6.2",
+    "remixicon": "^4.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
@@ -23,6 +25,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "prettier": "^3.5.3",
     "vite": "^6.3.5"
   }
 }

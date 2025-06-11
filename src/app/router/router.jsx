@@ -7,8 +7,12 @@ export default function AppRouter() {
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          {routes.map(({ path, element }) => (
-            <Route key={path} path={path} element={element} />
+          {routes.map(({ path, element, children }) => (
+            <Route key={path} path={path} element={element}>
+              {children?.map((child, index) => (
+                <Route key={index} {...child} />
+              ))}
+            </Route>
           ))}
         </Routes>
       </Suspense>

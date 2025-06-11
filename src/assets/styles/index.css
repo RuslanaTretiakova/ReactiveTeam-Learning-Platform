@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+:root {
+  --primary-color: green;
+  --text-color: #161616;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  padding: 1rem;
+}
+
+.home {
+   flex-direction: column;
+   gap: 20px
+}
+
+.topic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.topic-list__item a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  padding: 0.75rem 3rem 0.75rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 1px solid rgb(180, 180, 180);
+  width: 400px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 8px;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  width: 400px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-5px);
+  animation: dropdownFade 0.2s ease-out forwards;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes dropdownFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-button {
+  position: absolute;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #555;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-item {
+  padding: 0.5rem 1rem;
+  background-color: #f3f3f3;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+/* Hover */
+@media (hover: hover) {
+  .search-item:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+  }
+
+  .search-button:hover {
+    color: var(--primary-color);
+  }
+
+  .topic-list__item a:hover {
+    color: var(--primary-color);
+  }
+}
