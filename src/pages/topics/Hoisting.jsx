@@ -6,7 +6,13 @@ export default function Hoisting() {
       <section>
         <h2>Definition</h2>
         <p>
-          Hoisting is JavaScript's default behavior of moving declarations to the top of their scope before code execution. Only declarations are hoisted, not initializations. This means that you can reference variables and functions before they are defined in the code, but the behavior depends on how they are declared. It's important to note that hoisting occurs during the compilation phase, before any code is executed, and affects how scopes are interpreted.
+          Hoisting is JavaScript's default behavior of moving declarations to
+          the top of their scope before code execution. Only declarations are
+          hoisted, not initializations. This means that you can reference
+          variables and functions before they are defined in the code, but the
+          behavior depends on how they are declared. It's important to note that
+          hoisting occurs during the compilation phase, before any code is
+          executed, and affects how scopes are interpreted.
         </p>
       </section>
 
@@ -15,13 +21,13 @@ export default function Hoisting() {
 
         <h3>var</h3>
         <pre>
-{`console.log(a); // undefined - 'a' is hoisted and initialized with undefined
+          {`console.log(a); // undefined - 'a' is hoisted and initialized with undefined
 var a = 5;`}
         </pre>
 
         <h3>let / const</h3>
         <pre>
-{`console.log(b); // ReferenceError - 'b' is hoisted but not initialized (TDZ)
+          {`console.log(b); // ReferenceError - 'b' is hoisted but not initialized (TDZ)
 let b = 10;`}
         </pre>
       </section>
@@ -31,7 +37,7 @@ let b = 10;`}
 
         <h3>Function Declaration</h3>
         <pre>
-{`greet(); // Hello! - full function is hoisted and can be called before its definition
+          {`greet(); // Hello! - full function is hoisted and can be called before its definition
 function greet() {
   console.log("Hello!");
 }`}
@@ -39,7 +45,7 @@ function greet() {
 
         <h3>Function Expression</h3>
         <pre>
-{`sayHi(); // TypeError - 'sayHi' is hoisted as a variable but not assigned yet
+          {`sayHi(); // TypeError - 'sayHi' is hoisted as a variable but not assigned yet
 const sayHi = function() {
   console.log("Hi!");
 };`}
@@ -49,7 +55,7 @@ const sayHi = function() {
       <section>
         <h2>Tricky Cases</h2>
         <pre>
-{`console.log(hello); // function - function declaration is hoisted above var
+          {`console.log(hello); // function - function declaration is hoisted above var
 var hello = 3;
 function hello() {
   console.log("Hi");
@@ -59,7 +65,7 @@ console.log(hello); // 3 - the function is overridden by the var assignment`}
       </section>
       <section>
         <h2>Summary Table</h2>
-       <table className="hoisting-table">
+        <table className="hoisting-table">
           <thead>
             <tr>
               <th>Type</th>
@@ -97,5 +103,5 @@ console.log(hello); // 3 - the function is overridden by the var assignment`}
         </table>
       </section>
     </div>
-  );
-};
+  )
+}

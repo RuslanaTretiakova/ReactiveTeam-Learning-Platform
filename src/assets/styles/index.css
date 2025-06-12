@@ -7,7 +7,7 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   font-size: 16px;
   background-color: #f9f9f9;
 }
@@ -38,8 +38,8 @@ body {
 }
 
 .home {
-   flex-direction: column;
-   gap: 20px
+  flex-direction: column;
+  gap: 20px;
 }
 
 .topic-list {
@@ -155,7 +155,7 @@ p {
 pre {
   text-wrap: wrap;
   padding: 1px;
-  background-color: #E5E7EB;
+  background-color: #e5e7eb;
 }
 
 .hoisting-table {
@@ -164,7 +164,7 @@ pre {
 }
 
 .hoisting-table th {
-  background-color: #E5E7EB;
+  background-color: #e5e7eb;
   border: 1px dashed #000;
   text-align: center;
   padding: 8px;
