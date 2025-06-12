@@ -135,3 +135,43 @@ body {
     color: var(--primary-color);
   }
 }
+
+.container {
+  padding: 0px 20px;
+}
+
+h1 {
+  color: green;
+}
+
+h2 {
+  color: rgb(141, 85, 225);
+}
+
+p {
+  text-wrap: wrap;
+}
+
+pre {
+  text-wrap: wrap;
+  padding: 1px;
+  background-color: #E5E7EB;
+}
+
+.hoisting-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hoisting-table th {
+  background-color: #E5E7EB;
+  border: 1px dashed #000;
+  text-align: center;
+  padding: 8px;
+}
+
+.hoisting-table td {
+  border: 1px dashed #000;
+  text-align: center;
+  padding: 8px;
+}
