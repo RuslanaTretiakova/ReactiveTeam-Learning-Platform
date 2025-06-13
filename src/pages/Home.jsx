@@ -38,15 +38,17 @@ export default function Home() {
             {filtered.length > 0 ? (
               filtered.map((topic) => (
                 <li
-                  key={topic.path}
-                  onClick={() => handleSelect(topic.path)}
+                  key={topic.slug}
+                  onClick={() => handleSelect(`/${topic.slug}`)}
                   className="search-item"
                 >
                   {topic.title}
                 </li>
               ))
             ) : (
-              <li className="search-item">Nothing found</li>
+              <li key="not-found" className="search-item">
+                Nothing found
+              </li>
             )}
           </ul>
         )}
