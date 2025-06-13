@@ -141,6 +141,14 @@ body {
   padding: 0px 20px;
 }
 
+.container--center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
 h1 {
   color: green;
 }
@@ -176,7 +184,6 @@ pre {
   text-align: center;
   padding: 8px;
 }
-
 
 @media (max-width: 500px) {
   body {
