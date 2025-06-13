@@ -65,7 +65,7 @@ console.log(hello); // 3 - the function is overridden by the var assignment`}
       </section>
       <section>
         <h2>Summary Table</h2>
-        <table className="hoisting-table">
+        <table className="table">
           <thead>
             <tr>
               <th>Type</th>
