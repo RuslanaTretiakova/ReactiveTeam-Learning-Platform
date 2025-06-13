@@ -89,7 +89,7 @@ console.log(Object.is(+0, -0));
 
       <section>
         <h2>Summary Table</h2>
-        <table className="hoisting-table">
+        <table className="table">
           <thead>
             <tr>
               <th>Method</th>
