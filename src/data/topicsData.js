@@ -239,5 +239,28 @@ export const topicsData = {
     },
     
   ]
+},
+'loop-through-object-keys': {
+  title: 'Loop through Object keys',
+  sections: [
+    {
+      heading: 'for...in loop (basic)',
+      content: [
+       '```js\n for (const key in userMap) {\n  console.log(key, userMap[key]);\n }\n```',
+      ]
+    },
+     {
+      heading: 'Object.keys()',
+      content: [
+       '```js\n Object.keys(userMap).forEach((key) => {\n  console.log(key, userMap[key]);\n });\n```',
+      ]
+    },
+     {
+      heading: 'Object.entries() (for key-value pairs)',
+      content: [
+       '```js\n for (const [key, value] of Object.entries(userMap)) {\n  console.log(key, value);\n } \n```',
+      ]
+    }        
+  ]
 }
 }
