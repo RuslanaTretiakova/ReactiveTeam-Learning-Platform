@@ -6,4 +6,5 @@ export const topics = [
   { title: 'Property flag & descriptors', slug: 'property-flag-and-descriptors'},
   { title: 'Loop through Object keys', slug: 'loop-through-object-keys'},
   { title: 'Flatten nested array', slug: 'flatten-nested-array'},
+  { title: 'Filter array', slug: 'filter-array'},
 ]

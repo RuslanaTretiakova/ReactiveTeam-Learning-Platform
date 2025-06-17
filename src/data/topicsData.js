@@ -285,5 +285,17 @@ export const topicsData = {
       ]
     }        
   ]
+},
+'filter-array': {
+  title: 'Filter array',
+  sections: [
+    {
+      heading: 'Filtering Arrays with .filter()',
+      content: [
+        'The *.filter()* method creates a new array with only the elements that pass a condition (i.e., the callback returns true).',
+       '```js\nconst numbers = [4, 12, 7, 19, 3];\n const filtered = numbers.filter(num => num > 10);\n console.log(filtered); // [12, 19]\n```',
+      ]
+    }
+  ]
 }
 }
