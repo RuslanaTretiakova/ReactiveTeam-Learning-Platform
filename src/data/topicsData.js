@@ -262,5 +262,28 @@ export const topicsData = {
       ]
     }        
   ]
+},
+'flatten-nested-array': {
+  title: 'Flatten nested array',
+  sections: [
+    {
+      heading: 'Use flat() (built-in)',
+      content: [
+       '```js\n const nested = [1, [2, [3, [4]], 5]];\n const flat = nested.flat(Infinity); \n console.log(flat); // [1, 2, 3, 4, 5]\n```',
+      ]
+    },
+     {
+      heading: 'Recursive function (manual approach)',
+      content: [
+       '```js\n function flattenArray(arr) {\n    return arr.reduce((acc, val) => \n      Array.isArray(val) ? acc.concat(flattenArray(val)) : acc.concat(val),[]);\n }\n```',
+      ]
+    },
+     {
+      heading: 'Iterative with stack (alternative)',
+      content: [
+       '```js\n function flattenIterative(arr) {\n  const stack = [...arr];\n  const result = [];\n  while (stack.length) {\n    const next = stack.pop();\n    if (Array.isArray(next)) {\n      stack.push(...next); // preserve elements\n    } else {\n      result.push(next);\n    }\n  }\n  return result.reverse(); // because we used pop\n }\n```',
+      ]
+    }        
+  ]
 }
 }
