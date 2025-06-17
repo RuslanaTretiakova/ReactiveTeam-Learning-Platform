@@ -3,4 +3,5 @@ export const topics = [
   { title: 'Object Built-in Methods', slug: 'object-methods' },
   { title: 'Object Iterable', slug: 'object-iterable' },
   { title: 'Temporal Dead Zone', slug: 'temporal-dead-zone'},
+  { title: 'Property flag & descriptors', slug: 'property-flag-and-descriptors'},
 ]

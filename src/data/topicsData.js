@@ -211,5 +211,33 @@ export const topicsData = {
       ]
     }
   ]
+},
+'property-flag-and-descriptors': {
+  title: 'Property flag & descriptors',
+  sections: [
+    {
+      heading: 'Property flags',
+      content: [
+        '- *writable* - if true, the value can be changed, otherwise it’s read-only.',
+        '- *enurable* – if true, then listed in loops, otherwise not listed.',
+        '- *configurable* - if true, the property can be deleted and these attributes can be modified, otherwise not.',
+        'The method **Object.getOwnPropertyDescriptor** allows to query the full information about a property.',
+       '```js\n let user = {name: "John"};\n let descriptor = Object.getOwnPropertyDescriptor(user, "name");\n alert( JSON.stringify(descriptor, null, 2 ) ); \n /* property descriptor:\n  {\n    "value": "John",\n    "writable": true,\n    "enumerable": true,\n    "configurable": true\n  }\n */\n```',
+
+        'To change the flags, we can use **Object.defineProperty**.',
+        '```js\nlet user = {};\n\nObject.defineProperty(user, "name", {\n value: "John"\n});\n\n let descriptor = Object.getOwnPropertyDescriptor(user, "name");\n\n alert( JSON.stringify(descriptor, null, 2 ));\n\n /*\n  {\n    "value": "John",\n    "writable": false,\n    "enumerable": false,\n    "configurable": false\n  }\n*/\n```'
+      ]
+    },
+    {
+     heading: 'Object.defineProperties',
+      content: [
+        'There’s a method *Object.defineProperties(obj, descriptors)* that allows to define many properties at once.',
+        '```js\nObject.defineProperties(user, {\n name: { value: "John", writable: false },\n surname: { value: "Smith", writable: false },\n // ...\n});\n```',
+        'To create clone of object with object flags we have to use:',
+        '```js\n let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj))\n ```'
+      ]
+    },
+    
+  ]
 }
 }
