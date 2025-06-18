@@ -346,9 +346,8 @@ export const topicsData = {
     {
       heading: 'Global scope',
       content: [
-        'Each function has a new scope',
-        'Variables defined inside a function are not accessible (visible) from outside the function.',
-        '```js\n  function myFunction() {\n    let carName = "Volvo";   // Function Scope\n  }'    
+        'Variables declared outside function have Global scope.',
+        'Global variables can be accessed from anywhere in a JavaScript program.',
       ]
     },
 
