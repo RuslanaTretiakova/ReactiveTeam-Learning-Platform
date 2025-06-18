@@ -297,5 +297,61 @@ export const topicsData = {
       ]
     }
   ]
+},
+'variable-visible-area': {
+  title: 'Variable visible area',
+  sections: [
+    {
+      heading: 'Scopes:',
+      content: [
+        'Scope determines the accessibility (visibility) of variables.',
+        'JavaScript variables have 3 types of scope:',
+        '- Block scope',
+        '- Function scope',
+        '- Global scope',
+    
+      ]
+    },
+     {
+      heading: 'Block scope',
+      content: [
+        '*let* and *const* provides **Block scope** in JS.',
+        'Variables declared inside a { } block cannot be accessed from outside the block:',
+        '```js\n {\n    let x = 2;\n }\n\n // x can NOT be used here \n```',
+        'Variables declared with the var keyword can NOT have block scope.',
+        'Variables declared inside a { } block can be accessed from outside the block.',
+        '```\n {\n    var x = 2;\n }\n\n // x CAN be used here \n```'
+    
+      ]
+    },
+    {
+      heading: 'Local scope',
+      content: [
+        'Variables declared within a JavaScript function, are **LOCAL** to the function:',
+        '```js\n  // code here can NOT use carName\n\n  function myFunction() {\n    let carName = "Volvo";\n\n  // code here CAN use carName\n  }\n\n  // code here can NOT use carName \n```',
+        'Local variables have Function Scope: They can only be accessed from within the function.',
+        'Local variables are created when a function starts, and deleted when the function is completed.'
+       
+    
+      ]
+    },
+     {
+      heading: 'Function scope',
+      content: [
+        'Each function has a new scope',
+        'Variables defined inside a function are not accessible (visible) from outside the function.',
+        '```js\n  function myFunction() {\n    let carName = "Volvo";   // Function Scope\n  }'    
+      ]
+    },
+    {
+      heading: 'Global scope',
+      content: [
+        'Each function has a new scope',
+        'Variables defined inside a function are not accessible (visible) from outside the function.',
+        '```js\n  function myFunction() {\n    let carName = "Volvo";   // Function Scope\n  }'    
+      ]
+    },
+
+  ]
 }
 }
