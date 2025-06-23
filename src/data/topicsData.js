@@ -410,4 +410,74 @@ export const topicsData = {
     }
   ]
 },
+'array-iterating-sorting-filtering': {
+  title: 'Arrays Iterating, Sorting, Filtering',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'JavaScript arrays provide various methods to iterate over, sort, and filter data. These capabilities are essential for working with lists of items, transforming them, or organizing them based on custom criteria.'
+      ]
+    },
+    {
+      heading: 'Iterating Over Arrays',
+      content: [
+        'Common ways to iterate over arrays include:',
+        '- `for` loop: classic index-based iteration.',
+        '- `for...of`: loop through array values directly.',
+        '- `forEach()`: executes a function for each element.',
+        '- `map()`: returns a new array after applying a function to each element.',
+        '- `reduce()`: accumulates values to a single result.',
+        '```js\nconst arr = [1, 2, 3];\narr.forEach(n => console.log(n));\n```'
+      ]
+    },
+    {
+      heading: 'Filtering Arrays',
+      content: [
+        'The `filter()` method returns a new array with only the elements that pass a test provided by a function.',
+        '- Original array remains unchanged.',
+        '```js\nconst numbers = [1, 2, 3, 4, 5];\nconst even = numbers.filter(n => n % 2 === 0);\nconsole.log(even); // [2, 4]\n```'
+      ]
+    },
+    {
+      heading: 'Sorting Arrays',
+      content: [
+        'By default, `sort()` converts elements to strings and compares them in Unicode code point order.',
+        '```js\nconst nums = [10, 5, 2];\nnums.sort();\nconsole.log(nums); // [10, 2, 5]\n```',
+        'This can lead to unexpected results when sorting numbers.'
+      ]
+    },
+    {
+      heading: 'Custom Sorting for Arrays',
+      content: [
+        'You can provide a `compareFunction` to the `sort()` method for custom sorting logic.',
+        'Rules of compare function:',
+        '- If return < 0 → `a` comes before `b`',
+        '- If return > 0 → `b` comes before `a`',
+        '- If return === 0 → `a` and `b` are equal in order',
+        'Sorting numbers ascending:',
+        '```js\nconst nums = [10, 5, 2];\nnums.sort((a, b) => a - b);\nconsole.log(nums); // [2, 5, 10]\n```',
+        'Sorting descending:',
+        '```js\nnums.sort((a, b) => b - a);\n```',
+        'Sorting strings by length:',
+        '```js\nconst words = ["sun", "banana", "cat"];\nwords.sort((a, b) => a.length - b.length);\n```',
+        'Sorting objects by property:',
+        '```js\nconst users = [\n  { name: "Alice", age: 30 },\n  { name: "Bob", age: 25 }\n];\nusers.sort((a, b) => a.age - b.age);\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Method', 'Purpose', 'Mutates Original?', 'Returns New Array?'],
+        rows: [
+          ['forEach()', 'Iterate for side effects', 'No', 'No'],
+          ['map()', 'Transform items', 'No', 'Yes'],
+          ['filter()', 'Remove unwanted items', 'No', 'Yes'],
+          ['sort()', 'Sort items (customizable)', 'Yes', 'No']
+        ]
+      }
+    }
+  ]
+}
+
 }
