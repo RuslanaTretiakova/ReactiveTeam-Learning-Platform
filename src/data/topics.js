@@ -7,4 +7,5 @@ export const topics = [
   { title: 'Loop through Object keys', slug: 'loop-through-object-keys'},
   { title: 'Flatten nested array', slug: 'flatten-nested-array'},
   { title: 'Variable visible area', slug: 'variable-visible-area'},
+  { title: 'Copy Array Part', slug: 'copy-array-part' },
 ]

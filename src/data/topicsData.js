@@ -352,5 +352,62 @@ export const topicsData = {
     },
 
   ]
-}
+},
+'copy-array-part': {
+  title: 'Copy Array Part',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'In JavaScript, copying part of an array means creating a new array containing a subset of elements from an existing one.',
+        'This is useful when you want to manipulate or read a portion of data without affecting the original array.',
+        'Common methods for this include `slice()`, `splice()`, the spread operator (`...`), and `Array.from()`.'
+      ]
+    },
+    {
+      heading: 'Using slice()',
+      content: [
+        'The `slice()` method returns a shallow copy of a portion of an array.',
+        '- It does **not** modify the original array.',
+        '- Syntax: `array.slice(startIndex, endIndex)` (end index is not included)',
+        '```js\nconst arr = [10, 20, 30, 40, 50];\nconst part = arr.slice(1, 4);\nconsole.log(part); // [20, 30, 40]\n```'
+      ]
+    },
+    {
+      heading: 'Using splice()',
+      content: [
+        'The `splice()` method removes elements from an array and returns them.',
+        '- It **modifies** the original array.',
+        '- Syntax: `array.splice(startIndex, deleteCount)`',
+        '```js\nconst arr = [10, 20, 30, 40, 50];\nconst part = arr.splice(1, 3);\nconsole.log(part); // [20, 30, 40]\n```'
+      ]
+    },
+    {
+      heading: 'Using Spread Operator',
+      content: [
+        'The spread operator can be used with `slice()` to copy a portion of an array in a more concise way.',
+        '```js\nconst arr = [1, 2, 3, 4, 5];\nconst part = [...arr.slice(2, 4)];\nconsole.log(part); // [3, 4]\n```'
+      ]
+    },
+    {
+      heading: 'Using Array.from() with slice()',
+      content: [
+        '`Array.from()` can be used to convert a sliced portion of an array into a new array.',
+        '```js\nconst arr = [1, 2, 3, 4, 5];\nconst part = Array.from(arr.slice(1, 3));\nconsole.log(part); // [2, 3]\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Method', 'Modifies Original?', 'Returns New Array?', 'Example'],
+        rows: [
+          ['slice()', 'No', 'Yes', 'arr.slice(1, 4)'],
+          ['splice()', 'Yes', 'Yes', 'arr.splice(1, 3)'],
+          ['Spread + slice()', 'No', 'Yes', '[...arr.slice(2, 4)]'],
+          ['Array.from() + slice()', 'No', 'Yes', 'Array.from(arr.slice(1, 3))']
+        ]
+      }
+    }
+  ]
+},
 }
