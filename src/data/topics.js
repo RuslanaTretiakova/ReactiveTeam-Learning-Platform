@@ -12,6 +12,19 @@ export const topics = [
   { title: 'Nested Scopes', slug: 'nested-scopes' },
   { title: 'Functions Parameters / Arguments', slug: 'function-parameters-arguments' },
   { title: 'Function Default Parameters', slug: 'function-default-parameters' },
-  { title: 'ECMAScript Modules', slug: 'ecmascript-modules' }
+  { title: 'ECMAScript Modules', slug: 'ecmascript-modules' },
+  { title: 'Using Spread Operator for Function Arguments', slug: 'spread-function-arguments' },
+  { title: 'Compare arguments and Rest Parameters', slug: 'arguments-vs-rest-parameters' },
+  { title: 'Spread Operator for Array', slug: 'spread-operator-array' },
+  { title: 'Spread for Array Concatenation & Destructuring', slug: 'spread-array-concat-destructuring' },
+  { title: 'Destructuring Assignment', slug: 'destructuring-assignment' },
+  { title: 'Destructuring for Variables and Function Args', slug: 'destructuring-vars-and-params' },
+  { title: 'String Templates', slug: 'string-templates' },
+  { title: 'For...of Loop', slug: 'for-of-loop' },
+
+
+
+
+
 
 ]

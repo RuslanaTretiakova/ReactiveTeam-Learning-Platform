@@ -735,6 +735,534 @@ export const topicsData = {
       }
     }
   ]
-}
+},
+'spread-function-arguments': {
+  title: 'Using Spread Operator for Function Arguments',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'The spread operator (`...`) allows an iterable such as an array to be expanded in places where zero or more arguments are expected. It is commonly used to pass elements of an array as individual arguments to a function.',
+        'This feature was introduced in ECMAScript 6 (ES6).'
+      ]
+    },
+    {
+      heading: 'Basic Usage in Functions',
+      content: [
+        'You can use the spread operator to pass an array as individual arguments to a function:',
+        '```js\nfunction add(a, b, c) {\n  return a + b + c;\n}\n\nconst numbers = [1, 2, 3];\nconsole.log(add(...numbers)); // 6\n```'
+      ]
+    },
+    {
+      heading: 'Use with Math Functions',
+      content: [
+        'Functions like `Math.max()` and `Math.min()` accept individual arguments. You can use spread to apply an array:',
+        '```js\nconst nums = [5, 10, 3];\nconsole.log(Math.max(...nums)); // 10\n```'
+      ]
+    },
+    {
+      heading: 'Spread vs Rest Syntax',
+      content: [
+        '- **Spread** expands values when calling a function.',
+        '- **Rest** collects values inside the function definition.',
+        '```js\nfunction logAll(...args) {\n  console.log(args); // [1, 2, 3]\n}\n\nconst values = [1, 2, 3];\nlogAll(...values); // spreads into args\n```'
+      ]
+    },
+    {
+      heading: 'Combining Multiple Arrays in Function Arguments',
+      content: [
+        'You can merge arrays directly inside a function call using spread:',
+        '```js\nconst part1 = [1];\nconst part2 = [2, 3];\n\nfunction log(a, b, c) {\n  console.log(a, b, c);\n}\n\nlog(...part1, ...part2); // 1 2 3\n```'
+      ]
+    },
+    {
+      heading: 'Use with Constructors',
+      content: [
+        'Spread is helpful for passing arguments to constructors like `Date`:',
+        '```js\nconst dateParts = [2025, 0, 1];\nconst newYear = new Date(...dateParts);\nconsole.log(newYear); // Wed Jan 01 2025\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Use Case', 'Example'],
+        rows: [
+          ['Pass array to function', 'add(...[1, 2, 3])'],
+          ['Math functions', 'Math.max(...nums)'],
+          ['Merge arrays into call', 'log(...a1, ...a2)'],
+          ['Constructor arguments', 'new Date(...arr)'],
+          ['Spread vs Rest', '`...args` in call vs param']
+        ]
+      }
+    }
+  ]
+},
+'arguments-vs-rest-parameters': {
+  title: 'Compare arguments and Rest Parameters',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        '`arguments` and rest parameters (`...args`) are both ways to access function arguments in JavaScript.',
+        '`arguments` is an array-like object available in traditional functions, while rest parameters allow you to gather arguments into a real array using modern ES6 syntax.'
+      ]
+    },
+    {
+      heading: 'The arguments Object',
+      content: [
+        '`arguments` is available inside non-arrow functions and contains all arguments passed to the function:',
+        '```js\nfunction showArgs() {\n  console.log(arguments);\n}\n\nshowArgs(1, 2, 3); // [1, 2, 3] (array-like object)\n```',
+        '- It is **not a real array**, so methods like `.map()` do not work without conversion.'
+      ]
+    },
+    {
+      heading: 'Rest Parameters',
+      content: [
+        'Rest parameters collect remaining function arguments into a real array:',
+        '```js\nfunction showArgs(...args) {\n  console.log(args);\n}\n\nshowArgs(1, 2, 3); // [1, 2, 3]\n```',
+        '- You can use all array methods like `.map()`, `.filter()`, `.reduce()` on `args`.'
+      ]
+    },
+    {
+      heading: 'Use in Arrow Functions',
+      content: [
+        '`arguments` is not available in arrow functions:',
+        '```js\nconst fn = () => {\n  console.log(arguments); // ReferenceError\n};\n```',
+        'Use rest parameters instead:',
+        '```js\nconst fn = (...args) => {\n  console.log(args);\n};\n```'
+      ]
+    },
+    {
+      heading: 'Converting arguments to Array',
+      content: [
+        'To work with `arguments` like an array, you need to convert it manually:',
+        '```js\nfunction oldStyle() {\n  const args = Array.from(arguments);\n  console.log(args.map(x => x * 2));\n}\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Feature', '`arguments`', 'Rest Parameters'],
+        rows: [
+          ['Type', 'Array-like', 'Real array'],
+          ['Array methods', 'Not directly available', 'Fully supported'],
+          ['Arrow functions', 'Not available', 'Available'],
+          ['Introduced in', 'ES3', 'ES6'],
+          ['Strict mode safe', 'Yes', 'Yes'],
+          ['Default/rest params compatibility', 'No', 'Yes']
+        ]
+      }
+    }
+  ]
+},
+'spread-operator-array': {
+  title: 'Spread Operator for Array',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'The spread operator (`...`) allows an iterable like an array to be expanded into individual elements. It was introduced in ES6 (2015).',
+        'It is commonly used to copy arrays, merge them, insert elements, or pass them into functions as arguments.'
+      ]
+    },
+    {
+      heading: 'Copying an Array',
+      content: [
+        'You can create a shallow copy of an array using the spread operator:',
+        '```js\nconst original = [1, 2, 3];\nconst copy = [...original];\nconsole.log(copy); // [1, 2, 3]\n```',
+        '- The copy is shallow, meaning nested objects are still shared.'
+      ]
+    },
+    {
+      heading: 'Merging Arrays',
+      content: [
+        'Spread makes merging multiple arrays easy:',
+        '```js\nconst a = [1, 2];\nconst b = [3, 4];\nconst merged = [...a, ...b];\nconsole.log(merged); // [1, 2, 3, 4]\n```'
+      ]
+    },
+    {
+      heading: 'Adding Elements',
+      content: [
+        'You can insert elements before, between, or after other elements:',
+        '```js\nconst base = [2, 3];\nconst extended = [1, ...base, 4];\nconsole.log(extended); // [1, 2, 3, 4]\n```'
+      ]
+    },
+    {
+      heading: 'Using with Function Arguments',
+      content: [
+        'You can pass array elements as individual arguments using spread:',
+        '```js\nfunction sum(a, b, c) {\n  return a + b + c;\n}\n\nconst nums = [1, 2, 3];\nconsole.log(sum(...nums)); // 6\n```'
+      ]
+    },
+    {
+      heading: 'Spreading Strings',
+      content: [
+        'Spread also works with strings, turning them into arrays of characters:',
+        '```js\nconst word = "Hi!";\nconst chars = [...word];\nconsole.log(chars); // ["H", "i", "!"]\n```'
+      ]
+    },
+    {
+      heading: 'Shallow Copy Warning',
+      content: [
+        'Spread does not perform deep cloning:',
+        '```js\nconst nested = [{ x: 1 }, { y: 2 }];\nconst clone = [...nested];\nclone[0].x = 99;\nconsole.log(nested[0].x); // 99\n```'
+      ]
+    },
+    {
+      heading: 'Spread vs concat()',
+      content: [
+        'Spread can replace the traditional `concat()` method for merging arrays:',
+        '```js\nconst a = [1];\nconst b = [2, 3];\n\nconst spreadWay = [...a, ...b];\nconst concatWay = a.concat(b);\n\nconsole.log(spreadWay); // [1, 2, 3]\nconsole.log(concatWay); // [1, 2, 3]\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Use Case', 'Example'],
+        rows: [
+          ['Copy an array', '[...original]'],
+          ['Merge arrays', '[...a, ...b]'],
+          ['Add items inside array', '[1, ...arr, 4]'],
+          ['Pass to function', 'fn(...argsArray)'],
+          ['Convert string to array', '[..."hello"]'],
+          ['Only shallow copy', 'Nested objects are not deeply cloned']
+        ]
+      }
+    }
+  ]
+},
+'spread-array-concat-destructuring': {
+  title: 'Spread Operator for Array Concatenation & Destructuring Assignment',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'The spread operator (`...`) is used to expand arrays into individual elements. It plays a key role in array concatenation and destructuring assignments in modern JavaScript.',
+        'It was introduced in ECMAScript 2015 (ES6).'
+      ]
+    },
+    {
+      heading: 'Array Concatenation with Spread',
+      content: [
+        'Spread can be used to combine multiple arrays or insert elements into an array without using `concat()`:',
+        '```js\nconst arr1 = [1, 2];\nconst arr2 = [3, 4];\nconst merged = [...arr1, ...arr2];\nconsole.log(merged); // [1, 2, 3, 4]\n```',
+        'You can also insert elements in between:',
+        '```js\nconst combined = [0, ...arr1, 99];\nconsole.log(combined); // [0, 1, 2, 99]\n```'
+      ]
+    },
+    {
+      heading: 'Destructuring Assignment with Spread',
+      content: [
+        'Spread can be used in array destructuring to collect the remaining elements into a new array:',
+        '```js\nconst numbers = [1, 2, 3, 4];\nconst [first, second, ...rest] = numbers;\nconsole.log(first);  // 1\nconsole.log(second); // 2\nconsole.log(rest);   // [3, 4]\n```'
+      ]
+    },
+    {
+      heading: 'Skipping Elements During Destructuring',
+      content: [
+        'You can skip elements when destructuring and still use rest:',
+        '```js\nconst data = [10, 20, 30, 40, 50];\nconst [,, third, ...others] = data;\nconsole.log(third);  // 30\nconsole.log(others); // [40, 50]\n```'
+      ]
+    },
+    {
+      heading: 'Comparison with concat()',
+      content: [
+        'Spread operator is a modern, more concise alternative to `concat()`:',
+        '```js\nconst a = [1];\nconst b = [2, 3];\n\nconst spreadWay = [...a, ...b];\nconst concatWay = a.concat(b);\n\nconsole.log(spreadWay); // [1, 2, 3]\nconsole.log(concatWay); // [1, 2, 3]\n```'
+      ]
+    },
+    {
+      heading: 'Limitations and Notes',
+      content: [
+        '- In destructuring, the `...rest` variable must come at the **end** of the pattern.',
+        '- Spread only performs a **shallow copy** when duplicating arrays.',
+        '- This syntax improves readability and avoids mutating original arrays.'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Use Case', 'Syntax Example', 'Note'],
+        rows: [
+          ['Concatenate arrays', '[...arr1, ...arr2]', 'Like `concat()`, but cleaner'],
+          ['Insert into array', '[1, ...arr, 99]', 'Add before/after spread'],
+          ['Destructure with rest', '[a, b, ...rest] = arr', 'Collects remaining items'],
+          ['Skip elements', '[,, third, ...tail] = arr', 'Skip and capture tail'],
+          ['Spread must be last', '...rest at end only', 'Required in destructuring']
+        ]
+      }
+    }
+  ]
+},'destructuring-assignment': {
+  title: 'Destructuring Assignment',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'Destructuring assignment is a syntax in JavaScript that allows unpacking values from arrays or properties from objects into distinct variables.',
+        'It improves code readability and reduces repetitive code when accessing elements or properties.'
+      ]
+    },
+    {
+      heading: 'Array Destructuring',
+      content: [
+        'Array destructuring assigns variables based on position:',
+        '```js\nconst numbers = [10, 20, 30];\nconst [a, b, c] = numbers;\nconsole.log(a); // 10\n```',
+        '- You can skip elements by leaving gaps:',
+        '```js\nconst [first, , third] = [1, 2, 3];\nconsole.log(third); // 3\n```',
+        '- You can use default values:',
+        '```js\nconst [x = 5, y = 10] = [undefined];\nconsole.log(x); // 5\n```'
+      ]
+    },
+    {
+      heading: 'Using Rest with Arrays',
+      content: [
+        'Use the rest operator to gather remaining values:',
+        '```js\nconst [head, ...tail] = [1, 2, 3, 4];\nconsole.log(tail); // [2, 3, 4]\n```'
+      ]
+    },
+    {
+      heading: 'Object Destructuring',
+      content: [
+        'Extract object properties by name:',
+        '```js\nconst user = { name: "Alice", age: 25 };\nconst { name, age } = user;\nconsole.log(name); // Alice\n```',
+        '- Rename during assignment:',
+        '```js\nconst { name: userName } = user;\nconsole.log(userName); // Alice\n```',
+        '- Set default values:',
+        '```js\nconst { city = "Unknown" } = user;\nconsole.log(city); // Unknown\n```'
+      ]
+    },
+    {
+      heading: 'Nested Destructuring',
+      content: [
+        'You can destructure deeply nested properties:',
+        '```js\nconst person = { name: "Bob", address: { city: "Kyiv" } };\nconst { address: { city } } = person;\nconsole.log(city); // Kyiv\n```'
+      ]
+    },
+    {
+      heading: 'Function Parameters with Destructuring',
+      content: [
+        'You can destructure directly in a function parameter:',
+        '```js\nfunction greet({ name }) {\n  console.log(`Hello, ${name}`);\n}\n\ngreet({ name: "Olena" });\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Use Case', 'Syntax Example', 'Note'],
+        rows: [
+          ['Array destructuring', '[a, b] = [1, 2]', 'Based on position'],
+          ['Skip elements', '[, b] = [1, 2]', 'Leave gaps'],
+          ['Rest in array', '[a, ...rest] = arr', 'Collect remaining items'],
+          ['Object destructuring', '{ x, y } = obj', 'Based on key'],
+          ['Rename key', '{ x: localX } = obj', 'Create new variable name'],
+          ['Nested object', '{ a: { b } } = obj', 'Access deeply'],
+          ['Defaults', '[x = 10] = []', 'If value is undefined'],
+          ['Function param', 'function({ x }) {}', 'Destructure input']
+        ]
+      }
+    }
+  ]
+},
+'destructuring-vars-and-params': {
+  title: 'Destructuring Assignment for Variables and Function Arguments',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'Destructuring assignment allows unpacking values from arrays or objects into individual variables. This can be done when declaring variables or directly in function parameters for cleaner and more expressive code.'
+      ]
+    },
+    {
+      heading: 'Destructuring Variables: Arrays',
+      content: [
+        'Array values can be assigned by position:',
+        '```js\nconst arr = [1, 2, 3];\nconst [a, b, c] = arr;\nconsole.log(a); // 1\n```',
+        '- Skipping elements:',
+        '```js\nconst [first, , third] = [1, 2, 3];\n```',
+        '- Using default values:',
+        '```js\nconst [x = 10] = [];\nconsole.log(x); // 10\n```',
+        '- Using rest operator:',
+        '```js\nconst [head, ...tail] = [1, 2, 3, 4];\nconsole.log(tail); // [2, 3, 4]\n```'
+      ]
+    },
+    {
+      heading: 'Destructuring Variables: Objects',
+      content: [
+        'Object values are assigned by matching keys:',
+        '```js\nconst user = { name: "Alice", age: 30 };\nconst { name, age } = user;\n```',
+        '- Renaming keys:',
+        '```js\nconst { name: userName } = user;\nconsole.log(userName); // Alice\n```',
+        '- Default values:',
+        '```js\nconst { city = "Unknown" } = user;\n```'
+      ]
+    },
+    {
+      heading: 'Function Parameters: Object Destructuring',
+      content: [
+        'You can destructure an object directly in a function signature:',
+        '```js\nfunction showUser({ name, age }) {\n  console.log(`${name} is ${age}`);\n}\n\nshowUser({ name: "Bob", age: 25 });\n```',
+        '- With default values:',
+        '```js\nfunction greet({ name = "Guest" } = {}) {\n  console.log(`Hello, ${name}`);\n}\n\ngreet(); // Hello, Guest\n```'
+      ]
+    },
+    {
+      heading: 'Function Parameters: Array Destructuring',
+      content: [
+        'You can also destructure arrays inside parameter lists:',
+        '```js\nfunction logCoords([x, y]) {\n  console.log(`X: ${x}, Y: ${y}`);\n}\n\nlogCoords([10, 20]);\n```',
+        '- With defaults:',
+        '```js\nfunction init([x = 0, y = 0] = []) {\n  console.log(x, y);\n}\ninit(); // 0 0\n```'
+      ]
+    },
+    {
+      heading: 'Combining Destructuring with Other Parameters',
+      content: [
+        'Destructured parameters can be used alongside regular ones:',
+        '```js\nfunction draw({ width, height }, color = "black") {\n  console.log(width, height, color);\n}\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Use Case', 'Syntax Example', 'Notes'],
+        rows: [
+          ['Array destructuring', 'const [a, b] = arr', 'By position'],
+          ['Object destructuring', 'const { x, y } = obj', 'By key name'],
+          ['Rename variable', 'const { x: local } = obj', 'Alias for the property'],
+          ['Default values', 'const [x = 1] = []', 'If undefined'],
+          ['Function param (object)', 'function({ name }) {}', 'Destructure in signature'],
+          ['Function param (array)', 'function([x, y]) {}', 'By order'],
+          ['Nested defaults in param', 'function({ name = "Guest" } = {})', 'Safe fallback for missing args']
+        ]
+      }
+    }
+  ]
+},
+'string-templates': {
+  title: 'String Templates',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'String templates, also known as template literals, are a modern way to define strings using backtick syntax (`` ` ``).',
+        'They allow embedding expressions using `${}` syntax and support multi-line strings without special characters.',
+        'This feature was introduced in ECMAScript 6 (ES6).'
+      ]
+    },
+    {
+      heading: 'Basic Usage',
+      content: [
+        'You can embed variables and expressions into strings:',
+        '```js\nconst name = "Anna";\nconst greeting = `Hello, ${name}!`;\nconsole.log(greeting); // Hello, Anna!\n```'
+      ]
+    },
+    {
+      heading: 'Expressions Inside Templates',
+      content: [
+        'Any valid JavaScript expression can be embedded:',
+        '```js\nconst a = 5;\nconst b = 10;\nconsole.log(`Sum: ${a + b}`); // Sum: 15\n```'
+      ]
+    },
+    {
+      heading: 'Multiline Strings',
+      content: [
+        'Template literals preserve line breaks and white space directly:',
+        '```js\nconst message = `This is\nmultiline\ntext.`;\nconsole.log(message);\n```'
+      ]
+    },
+    {
+      heading: 'Tagged Template Literals',
+      content: [
+        'Tagged templates allow custom processing of template strings:',
+        '```js\nfunction tag(strings, value) {\n  return strings[0] + value.toUpperCase();\n}\n\nconst name = "alice";\nconsole.log(tag`Hello, ${name}`); // Hello, ALICE\n```',
+        '- The function receives the raw string parts and values separately.'
+      ]
+    },
+    {
+      heading: 'Comparison with Traditional Strings',
+      content: [
+        'Traditional string concatenation vs. template literal:',
+        '```js\nconst name = "Bob";\n// Traditional:\nconst result1 = "Hello, " + name + "!";\n// Template literal:\nconst result2 = `Hello, ${name}!`;\n```',
+        '- Template literals are cleaner, shorter, and more expressive.'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Feature', 'Syntax Example', 'Notes'],
+        rows: [
+          ['Variable interpolation', '`Hello, ${name}`', 'Insert values easily'],
+          ['Expression support', '`Total: ${a + b}`', 'Supports full expressions'],
+          ['Multiline strings', 'Use backticks and Enter', 'Line breaks preserved'],
+          ['Tagged templates', 'tag`Hello ${name}`', 'Custom string processors'],
+          ['Introduced in', 'ES6 (2015)', 'Modern JavaScript feature']
+        ]
+      }
+    }
+  ]
+},
+'for-of-loop': {
+  title: 'Know How for...of Loop Works',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'The `for...of` loop is used to iterate over **iterable** values such as arrays, strings, maps, sets, and more. It was introduced in ECMAScript 6 (ES6).',
+        'Unlike `for...in`, which iterates over property keys, `for...of` iterates over **values**.'
+      ]
+    },
+    {
+      heading: 'Basic Usage',
+      content: [
+        '```js\nconst arr = [1, 2, 3];\nfor (const value of arr) {\n  console.log(value);\n}\n// Output: 1, 2, 3\n```',
+        '- This loop automatically accesses each value in the iterable one by one.'
+      ]
+    },
+    {
+      heading: 'Iterating Over Strings',
+      content: [
+        'Strings are iterable character by character:',
+        '```js\nfor (const char of "JS") {\n  console.log(char);\n}\n// Output: J, S\n```'
+      ]
+    },
+    {
+      heading: 'Iterating Over Maps and Sets',
+      content: [
+        'Maps and Sets can also be iterated using `for...of`:',
+        '```js\nconst map = new Map([["a", 1], ["b", 2]]);\nfor (const [key, value] of map) {\n  console.log(key, value);\n}\n```',
+        '```js\nconst set = new Set([1, 2, 3]);\nfor (const num of set) {\n  console.log(num);\n}\n```'
+      ]
+    },
+    {
+      heading: 'Under the Hood: Symbol.iterator',
+      content: [
+        '`for...of` works by calling an object\'s `Symbol.iterator` method to retrieve an iterator object, then repeatedly calling its `next()` method until done.',
+        '```js\nconst iterable = [10, 20];\nconst iterator = iterable[Symbol.iterator]();\n\nconsole.log(iterator.next()); // { value: 10, done: false }\nconsole.log(iterator.next()); // { value: 20, done: false }\nconsole.log(iterator.next()); // { value: undefined, done: true }\n```'
+      ]
+    },
+    {
+      heading: 'for...of vs for...in',
+      content: [
+        '```js\nconst arr = ["a", "b"];\n\nfor (const index in arr) {\n  console.log(index); // 0, 1\n}\n\nfor (const value of arr) {\n  console.log(value); // a, b\n}\n```',
+        '- `for...in` iterates over property **keys**.\n- `for...of` iterates over **values**.\n- Use `for...of` when dealing with arrays, sets, maps, or strings.'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Feature', 'for...of'],
+        rows: [
+          ['Introduced in', 'ES6'],
+          ['Iterates over', 'Values of iterables'],
+          ['Common use cases', 'Arrays, Strings, Maps, Sets'],
+          ['Requires', 'Symbol.iterator'],
+          ['Not suitable for', 'Plain objects (unless made iterable)']
+        ]
+      }
+    }
+  ]
+},
+
 
 }
