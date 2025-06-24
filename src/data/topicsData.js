@@ -478,6 +478,60 @@ export const topicsData = {
       }
     }
   ]
+},
+'nested-scopes': {
+  title: 'Nested Scopes',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'A **nested scope** in JavaScript is a scope that exists within another scope. Functions or blocks defined inside other functions create these inner scopes.',
+        'Each nested scope has access to its own variables, and to those declared in any outer scopes.',
+        'This creates a hierarchical scope structure known as the **scope chain**.'
+      ]
+    },
+    {
+      heading: 'Scope Chain',
+      content: [
+        'When JavaScript looks for a variable, it searches through the **scope chain**:',
+        '- It starts in the current (local) scope.',
+        '- If not found, it moves up to the parent scope.',
+        '- This continues until the variable is found or the global scope is reached.',
+        '```js\nfunction outer() {\n  const a = "A";\n  function inner() {\n    const b = "B";\n    console.log(a); // found in outer scope\n  }\n  inner();\n}\n```'
+      ]
+    },
+    {
+      heading: 'Shadowing',
+      content: [
+        '**Shadowing** happens when a variable in a nested scope has the same name as one in an outer scope.',
+        'The inner variable "shadows" the outer one — it takes precedence within its own scope.',
+        '```js\nlet value = "outer";\nfunction demo() {\n  let value = "inner";\n  console.log(value); // "inner"\n}\n```'
+      ]
+    },
+    {
+      heading: 'Working with Nested Scopes',
+      content: [
+        'Nested scopes are useful for:',
+        '- Isolating logic and variables.',
+        '- Creating private helpers inside functions.',
+        '- Implementing closures.',
+        'Closures are functions that “remember” variables from the scope in which they were created.',
+        '```js\nfunction makeCounter() {\n  let count = 0;\n  return function () {\n    return ++count;\n  };\n}\nconst counter = makeCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Concept', 'Description'],
+        rows: [
+          ['Nested Scope', 'Scope defined inside another scope'],
+          ['Scope Chain', 'The chain of parent scopes for variable resolution'],
+          ['Shadowing', 'Inner variable overrides outer variable'],
+          ['Closure', 'Function retaining access to its outer scope variables']
+        ]
+      }
+    }
+  ]
 }
 
 }
