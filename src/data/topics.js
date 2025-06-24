@@ -10,5 +10,5 @@ export const topics = [
   { title: 'Copy Array Part', slug: 'copy-array-part' },
   { title: 'Arrays Iterating, Sorting, Filtering', slug: 'array-iterating-sorting-filtering' },
   { title: 'Nested Scopes', slug: 'nested-scopes' },
-  
+  { title: 'Functions Parameters / Arguments', slug: 'function-parameters-arguments' }
 ]

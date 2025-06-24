@@ -532,6 +532,78 @@ export const topicsData = {
       }
     }
   ]
+},'function-parameters-arguments': {
+  title: 'Functions Parameters / Arguments',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'In JavaScript, **parameters** are the variables listed in the function definition, while **arguments** are the actual values passed to the function when it is called.',
+        'A function can have any number of parameters, including none, one, or many. JavaScript also allows default values and dynamic argument handling.'
+      ]
+    },
+    {
+      heading: 'Defining Function Parameters',
+      content: [
+        'You can define one or more parameters in a function declaration:',
+        '```js\nfunction greet(name, age) {\n  console.log(`Hello, ${name}. You are ${age} years old.`);\n}\ngreet("Alice", 30);\n```',
+        '- Parameters are positional: the first argument matches the first parameter, and so on.',
+        '- You can also assign **default values** to parameters:',
+        '```js\nfunction greet(name = "Guest") {\n  console.log(`Hello, ${name}`);\n}\ngreet(); // "Hello, Guest"\n```'
+      ]
+    },
+    {
+      heading: 'Passing by Value (Primitives)',
+      content: [
+        'When you pass **primitive values** (like numbers, strings, booleans) to a function, JavaScript passes a **copy** of the value.',
+        'Modifying the parameter inside the function does **not** affect the original variable.',
+        '```js\nfunction change(x) {\n  x = 10;\n}\nlet num = 5;\nchange(num);\nconsole.log(num); // 5\n```',
+        '- This is called **pass by value**.'
+      ]
+    },
+    {
+      heading: 'Passing by Reference (Objects & Arrays)',
+      content: [
+        'When passing **objects** or **arrays**, JavaScript still passes **by value**, but the value is a **reference** to the object in memory.',
+        'This means the function can mutate the original object.',
+        '```js\nfunction update(obj) {\n  obj.name = "Updated";\n}\nconst user = { name: "Original" };\nupdate(user);\nconsole.log(user.name); // "Updated"\n```',
+        '- However, if you reassign the parameter itself, the reference is lost:',
+        '```js\nfunction reassign(obj) {\n  obj = { name: "New" };\n}\nreassign(user);\nconsole.log(user.name); // "Updated"\n```'
+      ]
+    },
+    {
+      heading: 'Dynamic Number of Arguments: arguments object',
+      content: [
+        'In regular (non-arrow) functions, JavaScript provides an **`arguments` object** that contains all arguments passed.',
+        'It is **array-like**, but not a true array.',
+        '```js\nfunction sum() {\n  let total = 0;\n  for (let i = 0; i < arguments.length; i++) {\n    total += arguments[i];\n  }\n  return total;\n}\nconsole.log(sum(1, 2, 3)); // 6\n```',
+        '- `arguments` does not work in arrow functions.'
+      ]
+    },
+    {
+      heading: 'Dynamic Number of Arguments: Rest Parameters',
+      content: [
+        '**Rest parameters** (`...args`) are the modern way to capture all remaining arguments into a real array.',
+        '```js\nfunction sum(...numbers) {\n  return numbers.reduce((total, n) => total + n, 0);\n}\nconsole.log(sum(1, 2, 3)); // 6\n```',
+        '- You can combine fixed parameters with rest:',
+        '```js\nfunction log(type, ...messages) {\n  console.log(`[${type}]`, ...messages);\n}\nlog("info", "Hello", "World");\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Concept', 'Description', 'Notes'],
+        rows: [
+          ['Parameter', 'Variable in function definition', 'Used as placeholder'],
+          ['Argument', 'Actual value passed in call', 'Used during execution'],
+          ['Pass by Value', 'Copy of primitive passed', 'Original is unaffected'],
+          ['Pass by Reference', 'Reference to object passed', 'Original can be modified'],
+          ['arguments object', 'Array-like object for all arguments', 'Legacy, not in arrow functions'],
+          ['Rest parameters', 'Captures extra arguments as array', 'Modern, recommended']
+        ]
+      }
+    }
+  ]
 }
 
 }
