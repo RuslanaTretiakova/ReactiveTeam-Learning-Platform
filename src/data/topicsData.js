@@ -604,6 +604,137 @@ export const topicsData = {
       }
     }
   ]
+},'function-default-parameters': {
+  title: 'Function Default Parameters',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'Function default parameters allow you to assign default values to function parameters if no argument is provided or the argument is explicitly `undefined`.',
+        'This feature was added in ECMAScript 2015 (ES6).'
+      ]
+    },
+    {
+      heading: 'Basic Usage',
+      content: [
+        'You can assign a default value directly in the parameter list:',
+        '```js\nfunction greet(name = "Guest") {\n  console.log(`Hello, ${name}!`);\n}\n\ngreet();         // Hello, Guest!\ngreet("Alice");  // Hello, Alice!\n```'
+      ]
+    },
+    {
+      heading: 'Triggered by undefined Only',
+      content: [
+        'Default values are only used when the argument is `undefined`, not when it is `null`, `0`, or an empty string:',
+        '```js\nfunction log(x = "default") {\n  console.log(x);\n}\n\nlog(undefined); // "default"\nlog(null);      // null\nlog(0);         // 0\nlog("");        // ""\n```'
+      ]
+    },
+    {
+      heading: 'Default Values Can Be Expressions',
+      content: [
+        'Default values can be computed at runtime using expressions:',
+        '```js\nfunction generateId(id = Math.random()) {\n  console.log(id);\n}\n\nfunction getDefaultUser() {\n  return { name: "Anonymous" };\n}\n\nfunction createUser(user = getDefaultUser()) {\n  console.log(user);\n}\n```'
+      ]
+    },
+    {
+      heading: 'Destructuring with Defaults',
+      content: [
+        'Default parameters also work with object destructuring:',
+        '```js\nfunction drawChart({ size = "big", color = "blue" } = {}) {\n  console.log(size, color);\n}\n\ndrawChart(); // "big", "blue"\n```'
+      ]
+    },
+    {
+      heading: 'Parameter Order Consideration',
+      content: [
+        'Parameters with default values should come after required ones to avoid confusion:',
+        '```js\nfunction multiply(a, b = 1) {\n  return a * b;\n}\n```'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Concept', 'Description'],
+        rows: [
+          ['Default if undefined', 'The parameter uses its default value when passed `undefined`.'],
+          ['Null/0/""', 'These values do NOT trigger the default.'],
+          ['Expression support', 'Default values can be any valid expression.'],
+          ['Destructuring', 'Works seamlessly with object destructuring.'],
+          ['Added in', 'ES6 (2015)']
+        ]
+      }
+    }
+  ]
+},
+'ecmascript-modules': {
+  title: 'ECMAScript Modules',
+  sections: [
+    {
+      heading: 'Definition',
+      content: [
+        'ECMAScript Modules (ES Modules or ESM) are the official standard for modular JavaScript code. Introduced in ES6 (2015), they allow developers to split code across multiple files using `import` and `export` statements.'
+      ]
+    },
+    {
+      heading: 'Exporting and Importing',
+      content: [
+        'You can export variables, functions, or classes from one module and import them in another.',
+        '```js\n// utils.js\nexport const sum = (a, b) => a + b;\nexport function greet(name) {\n  return `Hello, ${name}`;\n}\n\n// main.js\nimport { sum, greet } from "./utils.js";\nconsole.log(sum(2, 3));\n```'
+      ]
+    },
+    {
+      heading: 'Default Exports',
+      content: [
+        'A module can have one default export, which is typically used for the main functionality.',
+        '```js\n// math.js\nexport default function multiply(a, b) {\n  return a * b;\n}\n\n// main.js\nimport multiply from "./math.js";\nconsole.log(multiply(3, 4));\n```'
+      ]
+    },
+    {
+      heading: 'Mixing Named and Default Exports',
+      content: [
+        'Modules can export both named and default values.',
+        '```js\n// config.js\nexport const apiUrl = "https://api.example.com";\nexport default function log(msg) {\n  console.log(`[LOG]: ${msg}`);\n}\n\n// app.js\nimport log, { apiUrl } from "./config.js";\n```'
+      ]
+    },
+    {
+      heading: 'Module Behavior',
+      content: [
+        '- Modules are automatically in strict mode.',
+        '- Each module has its own scope.',
+        '- `import` and `export` must be at the top level.',
+        '- Modules are only evaluated once and cached afterward.'
+      ]
+    },
+    {
+      heading: 'Using Modules in the Browser',
+      content: [
+        'To use ES Modules in the browser, set the script type to `module`:',
+        '```html\n<script type="module" src="main.js"></script>\n```',
+        '- Modules follow CORS policy, so local testing may require a server.',
+        '- File paths must be relative or absolute.'
+      ]
+    },
+    {
+      heading: 'Dynamic Imports',
+      content: [
+        'Modules can be loaded on demand using the `import()` function:',
+        '```js\nbutton.addEventListener("click", async () => {\n  const module = await import("./utils.js");\n  console.log(module.sum(3, 4));\n});\n```',
+        'Dynamic imports return a promise and allow lazy-loading parts of your application.'
+      ]
+    },
+    {
+      heading: 'Summary Table',
+      table: {
+        head: ['Feature', 'Description'],
+        rows: [
+          ['export / import', 'Used to share and reuse code across files'],
+          ['default export', 'Only one allowed per module'],
+          ['Scoped', 'Each module runs in its own scope'],
+          ['Strict mode', 'All modules use strict mode automatically'],
+          ['Dynamic import', 'Loads modules asynchronously using import()'],
+          ['Supported since', 'ES6 (2015)']
+        ]
+      }
+    }
+  ]
 }
 
 }
