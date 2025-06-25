@@ -22,11 +22,7 @@ export const topics = [
   { title: 'String Templates', slug: 'string-templates' },
   { title: 'For...of Loop', slug: 'for-of-loop' },
   { title: 'Event Propagation and Delegation', slug: 'event-propagation-and-delegation' },
-  
-
-
-
-
-
+  { title: 'Timers and requestAnimationFrame', slug: 'timers-and-animation-frame' },
+  { title: 'Patterns and Best Practices', slug: 'patterns-and-best-practices' }
 
 ]

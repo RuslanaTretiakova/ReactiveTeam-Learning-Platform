@@ -1324,8 +1324,115 @@ export const topicsData = {
       }
     }
   ]
-}
-
+},
+'timers-and-animation-frame': {
+  title: 'Timers, clearTimeout, and requestAnimationFrame',
+  sections: [
+    {
+      heading: 'Definition of Timers',
+      content: [
+        'JavaScript timers allow scheduling code execution after a delay or at repeated intervals.',
+        'The most common timer functions are:',
+        '- `setTimeout()`: Runs a function once after a specified delay.',
+        '- `setInterval()`: Runs a function repeatedly at set intervals.',
+        'You can cancel these timers using `clearTimeout()` and `clearInterval()`.'
+      ]
+    },
+    {
+      heading: 'clearTimeout()',
+      content: [
+        '`clearTimeout()` cancels a timer set with `setTimeout()`. The scheduled callback will not run if cleared in time.',
+        '```js\nconst timerId = setTimeout(() => {\n  console.log("This will not run");\n}, 3000);\n\nclearTimeout(timerId);\n```',
+        '- Requires the timer ID returned by `setTimeout()`.'
+      ]
+    },
+    {
+      heading: 'requestAnimationFrame() (Optional)',
+      content: [
+        '`requestAnimationFrame()` schedules a function to run just before the browser\'s next repaint.',
+        'It is optimized for smooth animations and UI updates.',
+        '```js\nfunction animate(time) {\n  console.log("Frame at:", time);\n  requestAnimationFrame(animate);\n}\n\nrequestAnimationFrame(animate);\n```',
+        '- Provides better performance and smoother animations than `setTimeout()`.'
+      ]
+    },
+    {
+      heading: 'Canceling requestAnimationFrame',
+      content: [
+        'Use `cancelAnimationFrame()` to stop a scheduled frame callback.',
+        '```js\nconst id = requestAnimationFrame(animate);\ncancelAnimationFrame(id);\n```'
+      ]
+    },
+    {
+      heading: 'Difference Between setTimeout and requestAnimationFrame',
+      table: {
+        head: ['Feature', 'setTimeout', 'requestAnimationFrame'],
+        rows: [
+          ['Timing precision', 'Delay-based, not frame-synced', 'Synced with browser repaint'],
+          ['Use case', 'General delays, background tasks', 'Smooth animations, UI updates'],
+          ['Performance', 'Less optimized for animations', 'Optimized for rendering'],
+          ['Can skip frames?', 'No', 'Yes (frame rate adaptive)'],
+          ['Cancel method', 'clearTimeout(id)', 'cancelAnimationFrame(id)']
+        ]
+      }
+    },
+    {
+      heading: 'Example Comparison',
+      content: [
+        'Using `setTimeout()` for animation (not recommended):',
+        '```js\nfunction moveBoxTimeout() {\n  // Update position\n  setTimeout(moveBoxTimeout, 16); // ~60 FPS\n}\n```',
+        'Using `requestAnimationFrame()` for animation (recommended):',
+        '```js\nfunction moveBoxRAF() {\n  // Update position\n  requestAnimationFrame(moveBoxRAF);\n}\n```'
+      ]
+    },
+    {
+      heading: 'Summary',
+      content: [
+        '- Use `clearTimeout()` to cancel scheduled timeouts.',
+        '- Use `requestAnimationFrame()` for animations.',
+        '- Prefer `requestAnimationFrame()` over `setTimeout()` for smoother frame-synced behavior.'
+      ]
+    }
+  ]
+},
+'patterns-and-best-practices': {
+  title: 'Patterns and Best Practices',
+  sections: [
+    {
+      heading: 'Design Patterns (Optional)',
+      content: [
+        'Design patterns are reusable solutions to common software design problems.',
+        'Common JavaScript patterns include:',
+        '- **Singleton**: Ensures only one instance of a class exists.',
+        '- **Factory**: Creates objects without exposing the instantiation logic.',
+        '- **Module**: Encapsulates code and exposes public API.',
+        '- **Observer**: Allows multiple parts of code to react to changes (pub/sub model).',
+        '- **MVC (Model-View-Controller)**: Separates application data, UI, and logic.',
+        '```js\nconst Singleton = (function() {\n  let instance;\n  function createInstance() {\n    return { timestamp: Date.now() };\n  }\n  return {\n    getInstance() {\n      if (!instance) {\n        instance = createInstance();\n      }\n      return instance;\n    }\n  };\n})();\n```'
+      ]
+    },
+    {
+      heading: 'KISS, DRY, YAGNI Principles',
+      content: [
+        '- **KISS (Keep It Simple, Stupid)**: Keep code simple and avoid unnecessary complexity.',
+        '- **DRY (Don’t Repeat Yourself)**: Eliminate code duplication by extracting reusable functions or modules.',
+        '- **YAGNI (You Aren’t Gonna Need It)**: Don’t write code for features until they are actually needed.',
+        '```js\n// Applying DRY principle:\nfunction validateUser(user) {\n  if (!user.name) throw Error("Name required");\n}\n\nfunction createUser(user) {\n  validateUser(user);\n  // creation logic\n}\n\nfunction updateUser(user) {\n  validateUser(user);\n  // update logic\n}\n```'
+      ]
+    },
+    {
+      heading: 'SOLID Principles',
+      content: [
+        'SOLID is a set of five principles for writing clean and maintainable object-oriented code:',
+        '- **S – Single Responsibility Principle (SRP):** A class should have only one reason to change.',
+        '- **O – Open/Closed Principle (OCP):** Software entities should be open for extension but closed for modification.',
+        '- **L – Liskov Substitution Principle (LSP):** Subtypes must be substitutable for their base types.',
+        '- **I – Interface Segregation Principle (ISP):** Do not force classes to implement interfaces they don’t use.',
+        '- **D – Dependency Inversion Principle (DIP):** Depend on abstractions, not on concrete implementations.',
+        '```js\n// Example for SRP:\nclass UserRepository {\n  save(user) {\n    // Save user to DB\n  }\n}\n\nclass EmailService {\n  sendWelcomeEmail(user) {\n    // Send email\n  }\n}\n```'
+      ]
+    }
+  ]
+},
 
 
 }
