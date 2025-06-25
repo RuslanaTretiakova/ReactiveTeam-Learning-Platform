@@ -1263,6 +1263,69 @@ export const topicsData = {
     }
   ]
 },
+'event-propagation-and-delegation': {
+  title: 'Event Propagation, Preventing, and Delegating',
+  sections: [
+    {
+      heading: 'Event Propagation Cycle',
+      content: [
+        'Event propagation defines the sequence of how events move through the DOM tree.',
+        'There are three phases:',
+        '- **Capturing Phase**: Event moves from the root to the target element.',
+        '- **Target Phase**: Event reaches the target element.',
+        '- **Bubbling Phase**: Event bubbles back up from the target to the root.',
+        '```plaintext\ndocument → html → body → parent → target   (Capturing Phase)\ntarget                                      (Target Phase)\nparent → body → html → document             (Bubbling Phase)\n```'
+      ]
+    },
+    {
+      heading: 'Stopping Event Propagation',
+      content: [
+        '- **stopPropagation():** Stops the event from propagating further up or down the DOM tree.',
+        '- **stopImmediatePropagation():** Stops propagation and blocks other listeners on the same element.',
+        '```js\nelement.addEventListener("click", (event) => {\n  event.stopPropagation();\n});\n```'
+      ]
+    },
+    {
+      heading: 'Preventing Default Browser Behavior',
+      content: [
+        'Some events trigger default browser actions (e.g., link navigation, form submission).',
+        'Use `preventDefault()` to block these actions:',
+        '```js\ndocument.querySelector("a").addEventListener("click", (event) => {\n  event.preventDefault();\n});\n```'
+      ]
+    },
+    {
+      heading: 'Event Delegation Concept',
+      content: [
+        'Event delegation involves placing a single event listener on a parent element and checking `event.target` to respond to child element events.',
+        'It relies on event bubbling.',
+        '```js\ndocument.getElementById("list").addEventListener("click", (event) => {\n  if (event.target.tagName === "LI") {\n    console.log("Clicked:", event.target.textContent);\n  }\n});\n```'
+      ]
+    },
+    {
+      heading: 'Benefits and Drawbacks of Event Delegation',
+      table: {
+        head: ['Benefit', 'Description'],
+        rows: [
+          ['Better performance', 'Fewer event listeners in memory'],
+          ['Handles dynamic content', 'Works for newly added elements'],
+          ['Centralized logic', 'Easier maintenance and debugging']
+        ]
+      }
+    },
+    {
+      heading: 'Drawbacks of Event Delegation',
+      table: {
+        head: ['Drawback', 'Description'],
+        rows: [
+          ['Event.target specificity', 'Must manually check target element'],
+          ['Depends on bubbling', 'Only works for bubbling events'],
+          ['Unwanted event catching', 'Need to carefully filter events']
+        ]
+      }
+    }
+  ]
+}
+
 
 
 }

@@ -21,6 +21,8 @@ export const topics = [
   { title: 'Destructuring for Variables and Function Args', slug: 'destructuring-vars-and-params' },
   { title: 'String Templates', slug: 'string-templates' },
   { title: 'For...of Loop', slug: 'for-of-loop' },
+  { title: 'Event Propagation and Delegation', slug: 'event-propagation-and-delegation' },
+  
 
 
 
